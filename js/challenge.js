@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     likeBtn.addEventListener('click', () => {
         let likedNumber = counter.innerText
-        createListItem(likedNumber);
+        createChildItem('li', `${likedNumber} was liked`, '.likes');
     })
 
     // 4. Pause the counter
@@ -56,13 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    // 5. Leave comments on my gameplay, such as: "Wow, what a fun game this is."
+    let commentForm = document.getElementById('comment-form')
+    commentForm.addEventListener('submit', () => {
+        event.preventDefault();
+        let commentText = document.getElementById('comment-input').value
+        createChildItem('p', `${commentText}`, '#list');
+        commentForm.reset();
+    })
 })
 
-function createListItem(listText){
-    listItem = document.createElement('li');
-    listItem.textContent = `${listText} was liked!`;
+function createChildItem(itemType, itemText, selector){
+    item = document.createElement(itemType);
+    item.textContent = itemText;
 
-    document.querySelector('.likes').appendChild(listItem);
+    document.querySelector(selector).appendChild(item);
 }
 
 // let currentNumber = counter.innerText;
