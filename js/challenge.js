@@ -7,21 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Manually increment and decrement the counter using the plus and minus buttons.
     // Minus button
     let minusBtn = document.getElementById('minus');
-    minusBtn.addEventListener('click', () => {
-        --counter.textContent
-    })
+    minusBtn.addEventListener('click', () => --counter.textContent)
     // Plus button
     let plusBtn = document.getElementById('plus');
-    plusBtn.addEventListener('click', () => {
-        ++counter.textContent;
-    })
+    plusBtn.addEventListener('click', () => ++counter.textContent)
 
     // 3. "Like" an individual number of the counter. I should see the count of the number of "likes" associated with that number displayed.
     let likeBtn = document.getElementById('heart');
 
     likeBtn.addEventListener('click', () => {
-        let likedNumber = counter.innerText
-        createChildItem('li', `${likedNumber} was liked`, '.likes');
+        let likedNumber = counter.innerText;
+        let likesList = document.querySelector('.likes')
+        createChildItem('li', `${likedNumber} was liked!`, '.likes')
+        // let likesList = Array.from(document.querySelector('.likes').childNodes);
+        // createListItem('li', 'hello', '.likes')
+
+
+        // likesList.forEach((like, i) => {
+        //     // If the number is already inside the html collection, then update it's paragraph <span> element
+        //     if(likesList[i] === likedNumber){
+        //         likesList[i].textContent = 'I\'ve changed'
+        //     }
+        //     // else create a new list item
+        //     // if(likesList[i])
+        //     return console.log(likesList[i])
+        
     })
 
     // 4. Pause the counter
@@ -38,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let buttons = document.getElementsByTagName('button');
             for(let i = 0; i<buttons.length; i++){
                 if(buttons[i] === pauseBtn){
-
                 } else {
                     buttons[i].setAttribute('disabled', 'true')
                 }  
